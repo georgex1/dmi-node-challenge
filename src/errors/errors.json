@@ -1,0 +1,5 @@
+{
+    "NO_CITY": { "error": "No City defined" },
+    "API_RESPONSE_ERROR": {"error": "API get data error"},
+    "API_JSON_ERROR": {"error": "API json parse error"}
+}
