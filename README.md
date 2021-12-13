@@ -17,11 +17,15 @@ Change the city to compare the temperature
 - :limitTemperature
 Change the limit temperature to compare
 
-exmples:
+
+#### examples:
+
 /check_temperature/Misiones, Argentina
+<br />
 Will check if the temperature is greater than 15 celcius degrees in Misiones, Argentina
 
 /check_temperature/Misiones, Argentina/20
+<br />
 Will check if the temperature is greater than 20 celcius degrees in Misiones, Argentina
 
 
