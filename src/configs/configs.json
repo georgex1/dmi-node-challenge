@@ -1,4 +1,6 @@
 {
     "OPENWEATHER_URL": "https://api.openweathermap.org/data/2.5/weather?q=PARAM_QUERY&appid=PARAM_API_KEY&units=metric",
-    "OPENWEATHER_API_KEY": "d039020d1952fd963605686ee784d1fc"
+    "OPENWEATHER_API_KEY": "d039020d1952fd963605686ee784d1fc",
+    "DEFAULT_CITY": "Rio Cuarto, Argentina",
+    "DEFAULT_LIMIT_TEMPERATURE": 15
 }

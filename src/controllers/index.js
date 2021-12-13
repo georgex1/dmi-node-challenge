@@ -1,8 +1,9 @@
 
 'use-strict'
 const {getWeather} = require('../api/weatherApi')
+const configs = require('../configs/configs.json')
 
-const getTemperatureInfo = async (cityName, limitTemperature = 15) => {
+const getTemperatureInfo = async (cityName, limitTemperature = configs.DEFAULT_LIMIT_TEMPERATURE) => {
     const response = await checkIfTemperatureHigher(cityName, limitTemperature);
 
     if(response?.error){
@@ -16,7 +17,7 @@ const getTemperatureInfo = async (cityName, limitTemperature = 15) => {
     }
 }
 
-const checkIfTemperatureHigher = async (cityName, limitTemperature = 15) => {
+const checkIfTemperatureHigher = async (cityName, limitTemperature = configs.DEFAULT_LIMIT_TEMPERATURE) => {
     const apiResult = await getWeather(cityName)
 
     if(apiResult?.error){
