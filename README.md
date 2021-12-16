@@ -5,7 +5,6 @@
 With the follow rest api we can check if the temperature is greater or lesser of 15 celsius degrees in Rio Cuarto, Argentina by default
 
 ### service data:
-<br />
 endpoint: /check_temperature
 <br />
 method: POST
@@ -35,7 +34,6 @@ POST data:
     "cityName": "Misiones, Argentina"
 }
 ```
-
 Will check if the temperature is greater than 15 celsius degrees in Misiones, Argentina
 
 
@@ -60,3 +58,9 @@ Will check if the temperature is greater than 20 celsius degrees in Misiones, Ar
     "actual_temp_is_higher": true
 }
 ```
+
+## Live URL:
+https://dmichallenge.herokuapp.com/check_temperature
+
+Postman collection to test local and live
+[dmi-challenge.postman_collection.json](dmi-challenge.postman_collection.json)

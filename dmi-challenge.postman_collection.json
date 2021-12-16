@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "3c343d08-488c-425f-8f3a-8428378c120d",
+		"name": "dmi-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "check_temperature live",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cityName\": \"Misiones, Argentina\",\r\n    \"limitTemperature\": 5\r\n}"
+				},
+				"url": {
+					"raw": "https://dmichallenge.herokuapp.com/check_temperature",
+					"protocol": "https",
+					"host": [
+						"dmichallenge",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"check_temperature"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check_temperature Local",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cityName\": \"Misiones, Argentina\",\r\n    \"limitTemperature\": 40\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/check_temperature",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"check_temperature"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
