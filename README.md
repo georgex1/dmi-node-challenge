@@ -24,6 +24,16 @@ Default: 15
 
 
 #### examples:
+/check_temperature
+<br />
+POST data:
+
+```json
+{
+}
+```
+Will check if the temperature is greater than 15 celsius degrees in Rio Cuarto, Argentina
+
 
 /check_temperature
 <br />
@@ -47,7 +57,7 @@ POST data:
     "limitTemperature": 40
 }
 ```
-Will check if the temperature is greater than 20 celsius degrees in Misiones, Argentina
+Will check if the temperature is greater than 40 celsius degrees in Misiones, Argentina
 
 
 #### Response Example:
@@ -60,6 +70,9 @@ Will check if the temperature is greater than 20 celsius degrees in Misiones, Ar
 ```
 
 ## Live URL:
+https://dmichallenge.herokuapp.com/
+
+#### live POST url service
 https://dmichallenge.herokuapp.com/check_temperature
 
 Postman collection to test local and live
