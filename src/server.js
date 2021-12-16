@@ -1,15 +1,10 @@
-const fastify = require('fastify')({ logger: true })
+'use strict'
+const server = require('./app')({ logger: true })
 
-fastify.register(require('./routes'))
-
-
-const port = process.env.PORT || 3000;
-const start = async () => {
-  try {
-    await fastify.listen(port)
-  } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+const port = process.env.PORT || 3000
+server.listen(port, (err, address) => {
+    if (err) {
+        console.log(err)
+        process.exit(1)
+    }
+})

@@ -1,22 +1,24 @@
-const {getWeather} = require('../../src/api/weatherApi');
-const errors = require('../../src/errors/errors.json')
+const { getWeather } = require('../../src/api/weatherApi')
 
-describe("test Weather API", () => {
-    test('getWeather without city', async () => {
-        const result = await getWeather();
-        
-        expect(result).toBe(errors.NO_CITY);
+describe('test Weather API', () => {
+    test('getWeather handle Error: Nothing to geocode', async () => {
+        try {
+            await getWeather()
+        } catch (err) {
+            expect(err).not.toBe('')
+        }
+    })
+
+    test('getWeather handle Error: city not found', async () => {
+        try {
+            await getWeather('cityfakename')
+        } catch (err) {
+            expect(err).not.toBe('')
+        }
     })
 
     test('getWeather with city', async () => {
-        const result = await getWeather("Misiones, Argentina");
-        
-        expect(result).not.toBe(null);
-    })
-
-    afterAll(done => {
-        done()
+        const result = await getWeather('Misiones, Argentina')
+        expect(result).not.toBe('')
     })
 })
-
-

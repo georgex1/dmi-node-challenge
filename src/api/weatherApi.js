@@ -3,34 +3,27 @@ const https = require('https')
 const configs = require('../configs/configs.json')
 const errors = require('../errors/errors.json')
 
-const getWeather = async (cityName) => {
-    if(cityName === undefined){
-        return errors.NO_CITY;
-    }
-
-    const apiUrl = configs.OPENWEATHER_URL.replace('PARAM_QUERY', cityName).replace('PARAM_API_KEY', configs.OPENWEATHER_API_KEY)
-
-    return await new Promise((resolve, reject) => {
+const getWeather = async (cityName = '') => {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${cityName}&appid=${configs.OPENWEATHER_API_KEY}`
+    return new Promise((resolve, reject) => {
         https.get(apiUrl, (resp) => {
-            let data = '';
+            let data = ''
             resp.on('data', (chunk) => {
-                data += chunk;
+                data += chunk
             })
 
             resp.on('end', () => {
                 try {
-                    resolve(JSON.parse(data))
+                    const jsonResponse = JSON.parse(data)
+                    return (jsonResponse.cod !== 200) ? reject(jsonResponse.message) : resolve(jsonResponse)
                 } catch (error) {
-                    resolve(errors.API_JSON_ERROR)
-                };
-            });
+                    reject(errors.API_JSON_ERROR.error)
+                }
+            })
         }).on('error', (err) => {
-            resolve(errors.API_RESPONSE_ERROR)
+            reject(err)
         })
-
-        
     })
 }
 
-
-module.exports = {getWeather};
+module.exports = { getWeather }

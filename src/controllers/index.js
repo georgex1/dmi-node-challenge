@@ -1,34 +1,23 @@
-
-'use-strict'
-const {getWeather} = require('../api/weatherApi')
+const HttpStatus = require('http-status-codes')
 const configs = require('../configs/configs.json')
+const { checkIfTemperatureHigher } = require('../services/')
 
-const getTemperatureInfo = async (cityName, limitTemperature = configs.DEFAULT_LIMIT_TEMPERATURE) => {
-    const response = await checkIfTemperatureHigher(cityName, limitTemperature);
+const getTemperatureInfo = async (request, reply) => {
+    const cityName = request.body.cityName || configs.DEFAULT_CITY
+    const limitTemperature = request.body.limitTemperature || configs.DEFAULT_LIMIT_TEMPERATURE
 
-    if(response?.error){
-        return response;
-    }else{
-        return {
-            "compare_temp_location": cityName,
-            "compare_temp_value": limitTemperature,
-            "actual_temp_is_higher": response
-        };
-    }
-}
+    const response = await checkIfTemperatureHigher(cityName, limitTemperature)
 
-const checkIfTemperatureHigher = async (cityName, limitTemperature = configs.DEFAULT_LIMIT_TEMPERATURE) => {
-    const apiResult = await getWeather(cityName)
-
-    if(apiResult?.error){
-        return apiResult;
-    }else{
-        if(apiResult.main.temp > limitTemperature){
-            return true;
-        }else{
-            return false;
+    if (response?.error) {
+        reply.code(HttpStatus.StatusCodes.UNPROCESSABLE_ENTITY).send(response)
+    } else {
+        const responsePayload = {
+            compare_temp_location: cityName,
+            compare_temp_value: limitTemperature,
+            actual_temp_is_higher: response
         }
+        reply.send(responsePayload)
     }
 }
 
-module.exports = {getTemperatureInfo, checkIfTemperatureHigher}
+module.exports = { getTemperatureInfo }

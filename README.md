@@ -2,34 +2,59 @@
 
 ## Weather Challenge
 
-With the follow rest api we can check if the temperature is greater or lesser of 15 celsius degrees in Rio Cuarto, Argentina
+With the follow rest api we can check if the temperature is greater or lesser of 15 celsius degrees in Rio Cuarto, Argentina by default
 
-The service name is /check_temperature
+### service data:
+<br />
+endpoint: /check_temperature
+<br />
+method: POST
+<br />
+Content-Type: application/json
 
 #### Parameters:
 
-You can check the temperature of other city and with other limit to compare:
-/check_temperature/:cityName/:limitTemperature
-
-- :cityName
+- cityName:
+<br />
 Change the city to compare the temperature
+<br />
+Default: Rio Cuarto, Argentina
 
-- :limitTemperature
+- limitTemperature
+<br />
 Change the limit temperature to compare
+<br />
+Default: 15
 
 
 #### examples:
 
-/check_temperature/Misiones, Argentina
+/check_temperature/
+<br />
+POST data:
+<br />
+```json
+{
+    "cityName": "Misiones, Argentina"
+}
+```
 <br />
 Will check if the temperature is greater than 15 celsius degrees in Misiones, Argentina
 
-/check_temperature/Misiones, Argentina/20
+/check_temperature/
+<br />
+POST data:
+<br />
+```json
+{
+    "cityName": "Misiones, Argentina",
+    "limitTemperature": 40
+}
 <br />
 Will check if the temperature is greater than 20 celsius degrees in Misiones, Argentina
 
 
-#### Response:
+#### Response Example:
 ```json
 {
     "compare_temp_location": "Rio Cuarto, Argentina",
