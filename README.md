@@ -15,13 +15,12 @@ Content-Type: application/json
 #### Parameters:
 
 - cityName:
-<br />
 Change the city to compare the temperature
 <br />
 Default: Rio Cuarto, Argentina
 
+
 - limitTemperature
-<br />
 Change the limit temperature to compare
 <br />
 Default: 15
@@ -29,28 +28,29 @@ Default: 15
 
 #### examples:
 
-/check_temperature/
+/check_temperature
 <br />
 POST data:
-<br />
+
 ```json
 {
     "cityName": "Misiones, Argentina"
 }
 ```
-<br />
+
 Will check if the temperature is greater than 15 celsius degrees in Misiones, Argentina
 
-/check_temperature/
+
+/check_temperature
 <br />
 POST data:
-<br />
+
 ```json
 {
     "cityName": "Misiones, Argentina",
     "limitTemperature": 40
 }
-<br />
+
 Will check if the temperature is greater than 20 celsius degrees in Misiones, Argentina
 
 
