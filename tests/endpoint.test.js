@@ -11,6 +11,16 @@ describe('requests the "/check_temperature" route', () => {
 
     })
 
+    test('Should show DMI weather challenge title', async () => {
+        const response = await app.inject({
+            method: 'GET',
+            url: '/'
+        })
+
+        expect(response.statusCode).toBe(HttpStatus.StatusCodes.OK)
+        expect(response.body).toBe('DMI weather challenge')
+    })
+
     test('Should have success response with no data', async () => {
         const response = await app.inject({
             method: 'POST',

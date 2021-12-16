@@ -21,4 +21,8 @@ describe('test Weather API', () => {
         const result = await getWeather('Misiones, Argentina')
         expect(result).not.toBe('')
     })
+
+    afterAll(done => {
+        done()
+    })
 })
