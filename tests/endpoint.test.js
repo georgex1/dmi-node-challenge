@@ -7,10 +7,6 @@ const app = buildFastify()
 afterAll(() => app.close())
 
 describe('requests the "/check_temperature" route', () => {
-    beforeEach(async () => {
-
-    })
-
     test('Should show DMI weather challenge title', async () => {
         const response = await app.inject({
             method: 'GET',
