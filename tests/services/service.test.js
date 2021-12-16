@@ -1,4 +1,5 @@
 const { checkIfTemperatureHigher } = require('../../src/services/index')
+const errors = require('../../src/errors/errors.json')
 
 describe('Test Service', () => {
     test('Temperature must by lower than Number.MAX_SAFE_INTEGER', async () => {
@@ -19,6 +20,11 @@ describe('Test Service', () => {
             // city not found
             expect(err).not.toBe(null)
         }
+    })
+
+    test('Temperature Not a Number handle Error', async () => {
+        const result = await checkIfTemperatureHigher('Misiones, Argentina', 'not a number')
+        expect(result).toBe(errors.TEMPERATURE_NAN)
     })
 
     afterAll(done => {

@@ -88,4 +88,21 @@ describe('requests the "/check_temperature" route', () => {
         expect(response.statusCode).toBe(HttpStatus.StatusCodes.UNPROCESSABLE_ENTITY)
         expect(JSONBody.error).toBe(errors.API_RESPONSE_ERROR.error)
     })
+
+    test('Should have error Temperature not a number', async () => {
+        const postData = {
+            limitTemperature: 'not a number'
+        }
+
+        const response = await app.inject({
+            method: 'POST',
+            url: '/check_temperature',
+            payload: postData
+        })
+
+        const JSONBody = JSON.parse(response.body)
+
+        expect(response.statusCode).toBe(HttpStatus.StatusCodes.UNPROCESSABLE_ENTITY)
+        expect(JSONBody.error).toBe(errors.TEMPERATURE_NAN.error)
+    })
 })
